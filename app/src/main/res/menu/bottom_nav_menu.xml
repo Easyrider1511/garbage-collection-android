@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_map" android:title="@string/nav_map" android:icon="@android:drawable/ic_dialog_map"/>
+    <item android:id="@+id/nav_incidents" android:title="@string/nav_incidents" android:icon="@android:drawable/ic_dialog_alert"/>
+    <item android:id="@+id/nav_schedules" android:title="@string/nav_schedules" android:icon="@android:drawable/ic_menu_my_calendar"/>
+    <item android:id="@+id/nav_profile" android:title="@string/nav_profile" android:icon="@android:drawable/ic_menu_myplaces"/>
+</menu>

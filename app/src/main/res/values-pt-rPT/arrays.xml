@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="incident_type_values">
+        <item>MISSING_CONTAINER</item>
+        <item>VANDALIZED_CONTAINER</item>
+        <item>HAZARDOUS_SPILL</item>
+        <item>OVERFLOW</item>
+        <item>ILLEGAL_DUMPING</item>
+        <item>DAMAGED_EQUIPMENT</item>
+        <item>OTHER</item>
+    </string-array>
+
+    <string-array name="incident_type_labels">
+        <item>@string/incident_type_missing_container</item>
+        <item>@string/incident_type_vandalized_container</item>
+        <item>@string/incident_type_hazardous_spill</item>
+        <item>@string/incident_type_overflow</item>
+        <item>@string/incident_type_illegal_dumping</item>
+        <item>@string/incident_type_damaged_equipment</item>
+        <item>@string/item_other</item>
+    </string-array>
+
+    <string-array name="severity_level_values">
+        <item>LOW</item>
+        <item>MEDIUM</item>
+        <item>HIGH</item>
+        <item>CRITICAL</item>
+    </string-array>
+
+    <string-array name="severity_level_labels">
+        <item>@string/severity_low</item>
+        <item>@string/severity_medium</item>
+        <item>@string/severity_high</item>
+        <item>@string/severity_critical</item>
+    </string-array>
+
+    <string-array name="pickup_item_type_values">
+        <item>Furniture</item>
+        <item>Electronics</item>
+        <item>Appliances</item>
+        <item>Mattress</item>
+        <item>Construction Debris</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="pickup_item_type_labels">
+        <item>@string/pickup_item_furniture</item>
+        <item>@string/pickup_item_electronics</item>
+        <item>@string/pickup_item_appliances</item>
+        <item>@string/pickup_item_mattress</item>
+        <item>@string/pickup_item_construction_debris</item>
+        <item>@string/item_other</item>
+    </string-array>
+
+    <string-array name="collection_point_type_values">
+        <item>BATTERIES</item>
+        <item>ELECTRONICS</item>
+        <item>BULKY_ITEMS</item>
+        <item>PAPER</item>
+        <item>GLASS</item>
+        <item>PLASTIC</item>
+        <item>ORGANIC</item>
+        <item>MIXED_WASTE</item>
+        <item>METAL</item>
+        <item>CLOTHES</item>
+    </string-array>
+
+    <string-array name="collection_point_type_labels">
+        <item>@string/collection_type_batteries</item>
+        <item>@string/collection_type_electronics</item>
+        <item>@string/collection_type_bulky_items</item>
+        <item>@string/collection_type_paper</item>
+        <item>@string/collection_type_glass</item>
+        <item>@string/collection_type_plastic</item>
+        <item>@string/collection_type_organic</item>
+        <item>@string/collection_type_mixed_waste</item>
+        <item>@string/collection_type_metal</item>
+        <item>@string/collection_type_clothes</item>
+    </string-array>
+
+    <string-array name="map_filter_type_values">
+        <item>ALL</item>
+        <item>BATTERIES</item>
+        <item>ELECTRONICS</item>
+        <item>BULKY_ITEMS</item>
+        <item>PAPER</item>
+        <item>GLASS</item>
+        <item>PLASTIC</item>
+        <item>ORGANIC</item>
+        <item>MIXED_WASTE</item>
+        <item>METAL</item>
+        <item>CLOTHES</item>
+    </string-array>
+
+    <string-array name="map_filter_type_labels">
+        <item>@string/map_filter_all_types</item>
+        <item>@string/collection_type_batteries</item>
+        <item>@string/collection_type_electronics</item>
+        <item>@string/collection_type_bulky_items</item>
+        <item>@string/collection_type_paper</item>
+        <item>@string/collection_type_glass</item>
+        <item>@string/collection_type_plastic</item>
+        <item>@string/collection_type_organic</item>
+        <item>@string/collection_type_mixed_waste</item>
+        <item>@string/collection_type_metal</item>
+        <item>@string/collection_type_clothes</item>
+    </string-array>
+
+    <string-array name="admin_incident_status_values">
+        <item>OPEN</item>
+        <item>IN_PROGRESS</item>
+        <item>RESOLVED</item>
+        <item>CLOSED</item>
+        <item>REJECTED</item>
+    </string-array>
+
+    <string-array name="admin_incident_status_labels">
+        <item>@string/status_open</item>
+        <item>@string/status_in_progress</item>
+        <item>@string/status_resolved</item>
+        <item>@string/status_closed</item>
+        <item>@string/status_rejected</item>
+    </string-array>
+
+    <string-array name="admin_schedule_status_values">
+        <item>PENDING</item>
+        <item>APPROVED</item>
+        <item>SCHEDULED</item>
+        <item>COMPLETED</item>
+        <item>CANCELLED</item>
+    </string-array>
+
+    <string-array name="admin_schedule_status_labels">
+        <item>@string/status_pending</item>
+        <item>@string/status_approved</item>
+        <item>@string/status_scheduled</item>
+        <item>@string/status_completed</item>
+        <item>@string/status_cancelled</item>
+    </string-array>
+</resources>

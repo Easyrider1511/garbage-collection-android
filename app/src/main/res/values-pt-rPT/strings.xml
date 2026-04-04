@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GC Collection</string>
+    <string name="nav_map">Mapa</string>
+    <string name="nav_incidents">Ocorrências</string>
+    <string name="nav_schedules">Recolhas</string>
+    <string name="nav_profile">Perfil</string>
+
+    <string name="title_map">Mapa</string>
+    <string name="title_incidents">Ocorrências</string>
+    <string name="title_schedules">Recolhas</string>
+    <string name="title_profile">Perfil</string>
+    <string name="title_report_incident">Reportar ocorrência</string>
+    <string name="title_schedule_pickup">Agendar recolha</string>
+    <string name="title_incident_details">Detalhes da ocorrência</string>
+    <string name="title_edit_profile">Editar perfil</string>
+    <string name="title_create_account">Criar conta</string>
+    <string name="title_admin_dashboard">Back-office de administração</string>
+    <string name="title_admin_latest_activity">Última atividade operacional</string>
+    <string name="title_admin_create_collection_point">Criar ponto de recolha</string>
+    <string name="title_admin_update_incident_status">Atualizar estado de ocorrência</string>
+    <string name="title_admin_update_schedule_status">Atualizar estado de recolha</string>
+    <string name="dialog_title_select_language">Escolher idioma da aplicação</string>
+
+    <string name="login_title">GC Collection</string>
+    <string name="prompt_register">Ainda não tens conta? Regista-te</string>
+    <string name="prompt_login">Já tens conta? Inicia sessão</string>
+
+    <string name="hint_username">Nome de utilizador</string>
+    <string name="hint_password">Palavra-passe</string>
+    <string name="hint_full_name">Nome completo</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone_optional">Telefone (opcional)</string>
+    <string name="hint_phone">Telefone</string>
+    <string name="hint_password_register">Palavra-passe (mín. 6 caracteres)</string>
+    <string name="hint_incident_title_required">Título da ocorrência *</string>
+    <string name="hint_description">Descrição</string>
+    <string name="hint_address_optional">Morada (opcional)</string>
+    <string name="hint_collection_point_name">Nome do ponto de recolha *</string>
+    <string name="hint_latitude">Latitude *</string>
+    <string name="hint_longitude">Longitude *</string>
+    <string name="hint_incident_id">ID da ocorrência *</string>
+    <string name="hint_schedule_id">ID da recolha *</string>
+    <string name="hint_schedule_date_optional">Data agendada ISO (opcional)</string>
+    <string name="hint_admin_notes_optional">Notas da administração (opcional)</string>
+    <string name="hint_schedule_description_required">Descrição *</string>
+    <string name="hint_pickup_address">Morada de recolha</string>
+    <string name="hint_new_password">Nova palavra-passe (deixar vazio para manter)</string>
+
+    <string name="label_incident_type">Tipo de ocorrência</string>
+    <string name="label_severity_level">Nível de gravidade</string>
+    <string name="label_item_type">Tipo de item</string>
+    <string name="label_description">Descrição</string>
+    <string name="label_type">Tipo</string>
+    <string name="label_location">Localização</string>
+    <string name="label_created_at">Criado em</string>
+    <string name="label_admin_notes">Notas da administração</string>
+    <string name="label_full_name">Nome completo</string>
+    <string name="label_email">Email</string>
+    <string name="label_phone">Telefone</string>
+    <string name="label_status">Estado</string>
+    <string name="label_not_set">Não definido</string>
+    <string name="label_getting_location">A obter localização&#8230;</string>
+    <string name="label_app_language">Idioma da aplicação</string>
+    <string name="label_choose_language">Escolhe o idioma</string>
+    <string name="label_map_filter">Filtrar pontos de recolha</string>
+    <string name="label_incident_photo">Fotografia da ocorrência</string>
+
+    <string name="action_login">Iniciar sessão</string>
+    <string name="action_register">Registar</string>
+    <string name="action_use_gps">Usar GPS</string>
+    <string name="action_submit_report">Submeter ocorrência</string>
+    <string name="action_capture_photo">Capturar foto</string>
+    <string name="action_remove_photo">Remover foto</string>
+    <string name="action_request_pickup">Pedir recolha</string>
+    <string name="action_report_same">Também vejo este problema</string>
+    <string name="action_edit_profile">Editar perfil</string>
+    <string name="action_open_admin_dashboard">Abrir back-office</string>
+    <string name="action_refresh_admin_dashboard">Atualizar dashboard</string>
+    <string name="action_create_collection_point">Criar ponto de recolha</string>
+    <string name="action_update_incident_status">Atualizar ocorrência</string>
+    <string name="action_update_schedule_status">Atualizar recolha</string>
+    <string name="action_logout">Terminar sessão</string>
+    <string name="action_save_changes">Guardar alterações</string>
+    <string name="action_change_language">Alterar idioma</string>
+
+    <string name="empty_incidents">Ainda não existem ocorrências reportadas.\nToca em + para criar uma.</string>
+    <string name="empty_schedules">Ainda não existem pedidos de recolha.\nToca em + para criar um.</string>
+    <string name="cd_create_incident">Reportar ocorrência</string>
+    <string name="cd_create_schedule">Agendar recolha</string>
+    <string name="cd_incident_photo_preview">Pré-visualização da fotografia da ocorrência</string>
+    <string name="language_english">Inglês</string>
+    <string name="language_portuguese_portugal">Português (Portugal)</string>
+    <string name="language_option_english_flag">🇬🇧 Inglês</string>
+    <string name="language_option_portuguese_flag">🇵🇹 Português</string>
+    <string name="map_unavailable_title">Mapa indisponível</string>
+    <string name="map_load_fallback_message">Não foi possível carregar o OpenStreetMap. Verifica a ligação à internet e tenta novamente.</string>
+    <string name="map_load_failed_message">Não foi possível carregar o OpenStreetMap: %1$s</string>
+
+    <string name="location_coordinates">Lat: %1$.4f, Lng: %2$.4f</string>
+    <string name="address_coordinates_fallback">Lat: %1$.4f, Lng: %2$.4f</string>
+    <string name="pending_scheduling">Aguarda agendamento</string>
+    <string name="no_description">Sem descrição</string>
+    <string name="no_address_provided">Sem morada</string>
+    <string name="no_admin_notes_yet">Sem notas da administração</string>
+    <string name="map_marker_snippet">Tipos: %1$s | Estado: %2$s</string>
+    <string name="map_filter_all_types">Todos os tipos</string>
+    <string name="map_filter_summary_zero">Não existem pontos de recolha disponíveis</string>
+    <string name="admin_metric_zero">0</string>
+    <string name="admin_dashboard_summary_legend">Pontos de recolha · ocorrências abertas · recolhas pendentes</string>
+    <string name="admin_no_collection_points">Não existem pontos de recolha</string>
+    <string name="admin_no_incidents">Não existem ocorrências</string>
+    <string name="admin_no_schedules">Não existem pedidos de recolha</string>
+
+    <string name="message_fill_all_fields">Preenche todos os campos</string>
+    <string name="message_fill_required_fields">Preenche os campos obrigatórios</string>
+    <string name="message_invalid_credentials">Credenciais inválidas</string>
+    <string name="message_connection_error">Erro de ligação: %1$s</string>
+    <string name="message_password_min_length">A palavra-passe tem de ter pelo menos 6 caracteres</string>
+    <string name="message_registration_failed">O registo falhou</string>
+    <string name="message_required">Obrigatório</string>
+    <string name="message_incident_reported">Ocorrência reportada!</string>
+    <string name="message_failed_to_submit">Falha ao submeter</string>
+    <string name="message_pickup_scheduled">Pedido de recolha criado com sucesso!</string>
+    <string name="message_request_failed">O pedido falhou</string>
+    <string name="message_report_count_updated">Contagem atualizada!</string>
+    <string name="message_error">Erro: %1$s</string>
+    <string name="message_error_loading_points">Erro ao carregar pontos: %1$s</string>
+    <string name="message_error_loading_incidents">Erro ao carregar ocorrências: %1$s</string>
+    <string name="message_error_loading_schedules">Erro ao carregar recolhas: %1$s</string>
+    <string name="message_error_loading_profile">Erro ao carregar o perfil</string>
+    <string name="message_location_unavailable">A localização atual não está disponível. Serão usadas as coordenadas predefinidas.</string>
+    <string name="message_name_email_required">Nome e email são obrigatórios</string>
+    <string name="message_profile_updated">Perfil atualizado!</string>
+    <string name="message_update_failed">A atualização falhou</string>
+    <string name="message_camera_permission_required">É necessária permissão de câmara para capturar uma fotografia.</string>
+    <string name="message_collection_point_created">Ponto de recolha criado com sucesso!</string>
+    <string name="message_incident_status_updated">Estado da ocorrência atualizado com sucesso!</string>
+    <string name="message_schedule_status_updated">Estado da recolha atualizado com sucesso!</string>
+
+    <string name="status_active">Ativo</string>
+    <string name="status_inactive">Inativo</string>
+    <string name="status_open">Aberto</string>
+    <string name="status_pending">Pendente</string>
+    <string name="status_in_progress">Em progresso</string>
+    <string name="status_resolved">Resolvido</string>
+    <string name="status_closed">Fechado</string>
+    <string name="status_rejected">Rejeitado</string>
+    <string name="status_approved">Aprovado</string>
+    <string name="status_scheduled">Agendado</string>
+    <string name="status_completed">Concluído</string>
+    <string name="status_cancelled">Cancelado</string>
+    <string name="collection_point_status_full">Cheio</string>
+    <string name="collection_point_status_maintenance">Manutenção</string>
+
+    <string name="role_user">Utilizador</string>
+    <string name="role_admin">Administrador</string>
+
+    <string name="severity_low">Baixa</string>
+    <string name="severity_medium">Média</string>
+    <string name="severity_high">Alta</string>
+    <string name="severity_critical">Crítica</string>
+
+    <string name="incident_type_missing_container">Contentor em falta</string>
+    <string name="incident_type_vandalized_container">Contentor vandalizado</string>
+    <string name="incident_type_hazardous_spill">Derrame perigoso</string>
+    <string name="incident_type_overflow">Transbordo</string>
+    <string name="incident_type_illegal_dumping">Descarga ilegal</string>
+    <string name="incident_type_damaged_equipment">Equipamento danificado</string>
+
+    <string name="pickup_item_furniture">Mobiliário</string>
+    <string name="pickup_item_electronics">Electrónica</string>
+    <string name="pickup_item_appliances">Eletrodomésticos</string>
+    <string name="pickup_item_mattress">Colchão</string>
+    <string name="pickup_item_construction_debris">Entulho</string>
+    <string name="item_other">Outro</string>
+
+    <string name="collection_type_batteries">Pilhas</string>
+    <string name="collection_type_electronics">Electrónica</string>
+    <string name="collection_type_bulky_items">Monos</string>
+    <string name="collection_type_paper">Papel</string>
+    <string name="collection_type_glass">Vidro</string>
+    <string name="collection_type_plastic">Plástico</string>
+    <string name="collection_type_organic">Orgânico</string>
+    <string name="collection_type_mixed_waste">Resíduos mistos</string>
+    <string name="collection_type_metal">Metal</string>
+    <string name="collection_type_clothes">Roupa</string>
+
+    <plurals name="report_count">
+        <item quantity="one">%1$d sinalização</item>
+        <item quantity="many">%1$d sinalizações</item>
+        <item quantity="other">%1$d sinalizações</item>
+    </plurals>
+
+    <plurals name="map_filter_summary">
+        <item quantity="one">%1$d de %2$d ponto visível</item>
+        <item quantity="many">%1$d de %2$d pontos visíveis</item>
+        <item quantity="other">%1$d de %2$d pontos visíveis</item>
+    </plurals>
+</resources>

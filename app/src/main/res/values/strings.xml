@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GC Collection</string>
+    <string name="nav_map">Map</string>
+    <string name="nav_incidents">Incidents</string>
+    <string name="nav_schedules">Schedules</string>
+    <string name="nav_profile">Profile</string>
+
+    <string name="title_map">Map</string>
+    <string name="title_incidents">Incidents</string>
+    <string name="title_schedules">Schedules</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_report_incident">Report Incident</string>
+    <string name="title_schedule_pickup">Schedule Pickup</string>
+    <string name="title_incident_details">Incident Details</string>
+    <string name="title_edit_profile">Edit Profile</string>
+    <string name="title_create_account">Create Account</string>
+    <string name="title_admin_dashboard">Admin Back Office</string>
+    <string name="title_admin_latest_activity">Latest operational activity</string>
+    <string name="title_admin_create_collection_point">Create collection point</string>
+    <string name="title_admin_update_incident_status">Update incident status</string>
+    <string name="title_admin_update_schedule_status">Update pickup status</string>
+    <string name="dialog_title_select_language">Choose app language</string>
+
+    <string name="login_title">GC Collection</string>
+    <string name="prompt_register">Don\'t have an account? Register</string>
+    <string name="prompt_login">Already have an account? Login</string>
+
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_full_name">Full Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone_optional">Phone (optional)</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_password_register">Password (min 6 chars)</string>
+    <string name="hint_incident_title_required">Incident Title *</string>
+    <string name="hint_description">Description</string>
+    <string name="hint_address_optional">Address (optional)</string>
+    <string name="hint_collection_point_name">Collection point name *</string>
+    <string name="hint_latitude">Latitude *</string>
+    <string name="hint_longitude">Longitude *</string>
+    <string name="hint_incident_id">Incident ID *</string>
+    <string name="hint_schedule_id">Pickup ID *</string>
+    <string name="hint_schedule_date_optional">Scheduled date ISO (optional)</string>
+    <string name="hint_admin_notes_optional">Admin notes (optional)</string>
+    <string name="hint_schedule_description_required">Description *</string>
+    <string name="hint_pickup_address">Pickup Address</string>
+    <string name="hint_new_password">New Password (leave blank to keep)</string>
+
+    <string name="label_incident_type">Incident Type</string>
+    <string name="label_severity_level">Severity Level</string>
+    <string name="label_item_type">Item Type</string>
+    <string name="label_description">Description</string>
+    <string name="label_type">Type</string>
+    <string name="label_location">Location</string>
+    <string name="label_created_at">Created at</string>
+    <string name="label_admin_notes">Admin Notes</string>
+    <string name="label_full_name">Full Name</string>
+    <string name="label_email">Email</string>
+    <string name="label_phone">Phone</string>
+    <string name="label_status">Status</string>
+    <string name="label_not_set">Not set</string>
+    <string name="label_getting_location">Getting location&#8230;</string>
+    <string name="label_app_language">App language</string>
+    <string name="label_choose_language">Choose language</string>
+    <string name="label_map_filter">Filter collection points</string>
+    <string name="label_incident_photo">Incident photo</string>
+
+    <string name="action_login">Login</string>
+    <string name="action_register">Register</string>
+    <string name="action_use_gps">Use GPS</string>
+    <string name="action_submit_report">Submit Report</string>
+    <string name="action_capture_photo">Capture photo</string>
+    <string name="action_remove_photo">Remove photo</string>
+    <string name="action_request_pickup">Request Pickup</string>
+    <string name="action_report_same">I also see this issue</string>
+    <string name="action_edit_profile">Edit Profile</string>
+    <string name="action_open_admin_dashboard">Open Admin Back Office</string>
+    <string name="action_refresh_admin_dashboard">Refresh dashboard</string>
+    <string name="action_create_collection_point">Create collection point</string>
+    <string name="action_update_incident_status">Update incident</string>
+    <string name="action_update_schedule_status">Update pickup</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_save_changes">Save Changes</string>
+    <string name="action_change_language">Change language</string>
+
+    <string name="empty_incidents">No incidents reported yet.\nTap + to report one.</string>
+    <string name="empty_schedules">No pickup schedules yet.\nTap + to request one.</string>
+    <string name="cd_create_incident">Report Incident</string>
+    <string name="cd_create_schedule">Schedule Pickup</string>
+    <string name="cd_incident_photo_preview">Incident photo preview</string>
+    <string name="profile_avatar" translatable="false">GC</string>
+
+    <string name="language_english">English</string>
+    <string name="language_portuguese_portugal">Portuguese (Portugal)</string>
+    <string name="language_option_english_flag">🇬🇧 English</string>
+    <string name="language_option_portuguese_flag">🇵🇹 Portuguese</string>
+    <string name="map_unavailable_title">Map unavailable</string>
+    <string name="map_load_fallback_message">OpenStreetMap could not be loaded. Please check your internet connection and try again.</string>
+    <string name="map_load_failed_message">OpenStreetMap could not be loaded: %1$s</string>
+
+    <string name="location_coordinates">Lat: %1$.4f, Lng: %2$.4f</string>
+    <string name="address_coordinates_fallback">Lat: %1$.4f, Lng: %2$.4f</string>
+    <string name="pending_scheduling">Pending scheduling</string>
+    <string name="no_description">No description</string>
+    <string name="no_address_provided">No address provided</string>
+    <string name="no_admin_notes_yet">No admin notes yet</string>
+    <string name="map_marker_snippet">Types: %1$s | Status: %2$s</string>
+    <string name="map_filter_all_types">All types</string>
+    <string name="map_filter_summary_zero">No collection points available</string>
+    <string name="admin_metric_zero">0</string>
+    <string name="admin_dashboard_summary_legend">Collection points · open incidents · pending pickups</string>
+    <string name="admin_no_collection_points">No collection points available</string>
+    <string name="admin_no_incidents">No incidents available</string>
+    <string name="admin_no_schedules">No pickup requests available</string>
+
+    <string name="message_fill_all_fields">Please fill in all fields</string>
+    <string name="message_fill_required_fields">Please fill in required fields</string>
+    <string name="message_invalid_credentials">Invalid credentials</string>
+    <string name="message_connection_error">Connection error: %1$s</string>
+    <string name="message_password_min_length">Password must be at least 6 characters</string>
+    <string name="message_registration_failed">Registration failed</string>
+    <string name="message_required">Required</string>
+    <string name="message_incident_reported">Incident reported!</string>
+    <string name="message_failed_to_submit">Failed to submit</string>
+    <string name="message_pickup_scheduled">Pickup scheduled!</string>
+    <string name="message_request_failed">Request failed</string>
+    <string name="message_report_count_updated">Report count updated!</string>
+    <string name="message_error">Error: %1$s</string>
+    <string name="message_error_loading_points">Error loading points: %1$s</string>
+    <string name="message_error_loading_incidents">Error loading incidents: %1$s</string>
+    <string name="message_error_loading_schedules">Error loading schedules: %1$s</string>
+    <string name="message_error_loading_profile">Error loading profile</string>
+    <string name="message_location_unavailable">Current location is unavailable. Default coordinates will be used.</string>
+    <string name="message_name_email_required">Name and email are required</string>
+    <string name="message_profile_updated">Profile updated!</string>
+    <string name="message_update_failed">Update failed</string>
+    <string name="message_camera_permission_required">Camera permission is required to capture a photo.</string>
+    <string name="message_collection_point_created">Collection point created successfully!</string>
+    <string name="message_incident_status_updated">Incident status updated successfully!</string>
+    <string name="message_schedule_status_updated">Pickup status updated successfully!</string>
+
+    <string name="status_active">Active</string>
+    <string name="status_inactive">Inactive</string>
+    <string name="status_open">Open</string>
+    <string name="status_pending">Pending</string>
+    <string name="status_in_progress">In progress</string>
+    <string name="status_resolved">Resolved</string>
+    <string name="status_closed">Closed</string>
+    <string name="status_rejected">Rejected</string>
+    <string name="status_approved">Approved</string>
+    <string name="status_scheduled">Scheduled</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="collection_point_status_full">Full</string>
+    <string name="collection_point_status_maintenance">Maintenance</string>
+
+    <string name="role_user">User</string>
+    <string name="role_admin">Administrator</string>
+
+    <string name="severity_low">Low</string>
+    <string name="severity_medium">Medium</string>
+    <string name="severity_high">High</string>
+    <string name="severity_critical">Critical</string>
+
+    <string name="incident_type_missing_container">Missing container</string>
+    <string name="incident_type_vandalized_container">Vandalized container</string>
+    <string name="incident_type_hazardous_spill">Hazardous spill</string>
+    <string name="incident_type_overflow">Overflow</string>
+    <string name="incident_type_illegal_dumping">Illegal dumping</string>
+    <string name="incident_type_damaged_equipment">Damaged equipment</string>
+
+    <string name="pickup_item_furniture">Furniture</string>
+    <string name="pickup_item_electronics">Electronics</string>
+    <string name="pickup_item_appliances">Appliances</string>
+    <string name="pickup_item_mattress">Mattress</string>
+    <string name="pickup_item_construction_debris">Construction debris</string>
+    <string name="item_other">Other</string>
+
+    <string name="collection_type_batteries">Batteries</string>
+    <string name="collection_type_electronics">Electronics</string>
+    <string name="collection_type_bulky_items">Bulky items</string>
+    <string name="collection_type_paper">Paper</string>
+    <string name="collection_type_glass">Glass</string>
+    <string name="collection_type_plastic">Plastic</string>
+    <string name="collection_type_organic">Organic</string>
+    <string name="collection_type_mixed_waste">Mixed waste</string>
+    <string name="collection_type_metal">Metal</string>
+    <string name="collection_type_clothes">Clothes</string>
+
+    <plurals name="report_count">
+        <item quantity="one">%1$d report</item>
+        <item quantity="other">%1$d reports</item>
+    </plurals>
+
+    <plurals name="map_filter_summary">
+        <item quantity="one">%1$d of %2$d point shown</item>
+        <item quantity="other">%1$d of %2$d points shown</item>
+    </plurals>
+</resources>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <com.google.android.material.appbar.MaterialToolbar android:id="@+id/toolbar"
+            android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" app:titleTextColor="#FFFFFF"
+            app:navigationIconTint="#FFFFFF"/>
+    </com.google.android.material.appbar.AppBarLayout>
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="16dp">
+
+        <TextView android:id="@+id/tvTitle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textSize="22sp" android:textStyle="bold" android:layout_marginBottom="8dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginBottom="16dp">
+            <TextView android:id="@+id/tvSeverity" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="14sp" android:textStyle="bold" android:layout_marginEnd="16dp"/>
+            <TextView android:id="@+id/tvStatus" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="14sp" android:textStyle="bold" android:layout_marginEnd="16dp"/>
+            <TextView android:id="@+id/tvReportCount" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:padding="16dp">
+                <TextView android:id="@+id/tvPhotoLabel" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/label_incident_photo" android:textSize="12sp" android:textColor="#888"
+                    android:visibility="gone"/>
+                <ImageView android:id="@+id/ivIncidentPhoto"
+                    android:layout_width="match_parent" android:layout_height="220dp"
+                    android:layout_marginTop="8dp" android:layout_marginBottom="12dp"
+                    android:background="#ECEFF1" android:contentDescription="@string/cd_incident_photo_preview"
+                    android:scaleType="centerCrop" android:visibility="gone"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/label_description" android:textSize="12sp" android:textColor="#888"/>
+                <TextView android:id="@+id/tvDescription" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="15sp" android:layout_marginBottom="12dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/label_type" android:textSize="12sp" android:textColor="#888"/>
+                <TextView android:id="@+id/tvType" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="15sp" android:layout_marginBottom="12dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/label_location" android:textSize="12sp" android:textColor="#888"/>
+                <TextView android:id="@+id/tvLocation" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="15sp" android:layout_marginBottom="4dp"/>
+                <TextView android:id="@+id/tvAddress" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="15sp" android:layout_marginBottom="12dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/label_created_at" android:textSize="12sp" android:textColor="#888"/>
+                <TextView android:id="@+id/tvCreatedAt" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="15sp" android:layout_marginBottom="12dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/label_admin_notes" android:textSize="12sp" android:textColor="#888"/>
+                <TextView android:id="@+id/tvAdminNotes" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnReportSame"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/action_report_same" style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="#F57C00" app:strokeColor="#F57C00"/>
+    </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
