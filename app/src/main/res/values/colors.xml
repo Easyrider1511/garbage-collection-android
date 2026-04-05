@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="brand_forest">#1F6B4F</color>
+    <color name="brand_forest_dark">#184C39</color>
+    <color name="brand_sun">#E39A2B</color>
+    <color name="brand_sky">#2E6F95</color>
+    <color name="surface_background">#F3F7F1</color>
+    <color name="surface_background_alt">#EAF2EC</color>
+    <color name="surface_card">#FCFDF9</color>
+    <color name="surface_card_warm">#FFF9EE</color>
+    <color name="surface_outline">#D9E4D8</color>
+    <color name="text_primary">#1E2E25</color>
+    <color name="text_secondary">#66776D</color>
+    <color name="metric_green_bg">#E7F4EB</color>
+    <color name="metric_orange_bg">#FFF1DE</color>
+    <color name="metric_blue_bg">#E8F1FB</color>
+    <color name="danger_red">#C62828</color>
     <color name="ic_launcher_background">#2E7D32</color>
 </resources>

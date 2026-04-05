@@ -49,6 +49,7 @@ class MainActivityTest {
                 activity.supportActionBar?.title
             )
             assertTrue(activity.findViewById<FrameLayout>(R.id.fragment_container).childCount > 0)
+            assertTrue(activity.findViewById<FrameLayout>(R.id.fragment_container).paddingBottom > 0)
 
             activity.findViewById<BottomNavigationView>(R.id.bottomNavigation).selectedItemId =
                 R.id.nav_profile

@@ -35,7 +35,7 @@ Current report output:
 
 Current coverage snapshot:
 
-- line coverage: 82.22%
+- line coverage: 82.34%
 - branch coverage: 60.97%
 - method coverage: 83.93%
 - class coverage: 98.31%

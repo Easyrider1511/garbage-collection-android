@@ -1,7 +1,9 @@
 package com.garbagecollection.app.ui
 
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import com.garbagecollection.app.R
 import com.garbagecollection.app.databinding.ActivityMainBinding
@@ -20,6 +22,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+        binding.bottomNavCard.doOnLayout { bottomNavCard ->
+            val bottomMargin = (bottomNavCard.layoutParams as? ViewGroup.MarginLayoutParams)
+                ?.bottomMargin ?: 0
+            binding.fragmentContainer.setPadding(
+                binding.fragmentContainer.paddingLeft,
+                binding.fragmentContainer.paddingTop,
+                binding.fragmentContainer.paddingRight,
+                bottomNavCard.height + bottomMargin
+            )
+        }
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {

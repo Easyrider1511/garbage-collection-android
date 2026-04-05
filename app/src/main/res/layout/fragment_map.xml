@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main_gradient">
 
     <org.osmdroid.views.MapView
         android:id="@+id/mapView"
@@ -12,12 +13,11 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardMapFilter"
+        style="@style/Widget.GarbageCollection.FloatingCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
-        android:layout_margin="12dp"
-        app:cardCornerRadius="18dp"
-        app:cardElevation="6dp">
+        android:layout_margin="14dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,8 +30,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/label_map_filter"
-                android:textColor="#455A64"
-                android:textSize="12sp" />
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spinnerCollectionTypeFilter"
@@ -43,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/map_filter_summary_zero"
-                android:textColor="#2E7D32"
+                android:textColor="@color/brand_forest"
                 android:textSize="13sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -51,12 +52,11 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardMapZoom"
+        style="@style/Widget.GarbageCollection.FloatingCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="18dp"
-        app:cardElevation="8dp">
+        android:layout_margin="16dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
                 android:contentDescription="@string/action_map_zoom_in"
                 android:minWidth="0dp"
                 android:text="@string/map_zoom_in_symbol"
-                android:textColor="#1B5E20"
+                android:textColor="@color/brand_forest"
                 android:textSize="24sp"
                 app:cornerRadius="14dp" />
 
@@ -85,7 +85,7 @@
                 android:contentDescription="@string/action_map_zoom_out"
                 android:minWidth="0dp"
                 android:text="@string/map_zoom_out_symbol"
-                android:textColor="#1B5E20"
+                android:textColor="@color/brand_forest"
                 android:textSize="24sp"
                 app:cornerRadius="14dp" />
         </LinearLayout>
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/map_unavailable_title"
-            android:textColor="#1B5E20"
+            android:textColor="@color/text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -117,7 +117,7 @@
             android:layout_marginTop="12dp"
             android:gravity="center"
             android:text="@string/map_load_fallback_message"
-            android:textColor="#455A64"
+            android:textColor="@color/text_secondary"
             android:textSize="15sp" />
     </LinearLayout>
 </FrameLayout>
