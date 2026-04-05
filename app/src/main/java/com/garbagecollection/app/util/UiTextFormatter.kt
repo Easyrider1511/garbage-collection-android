@@ -94,8 +94,8 @@ object UiTextFormatter {
 
     fun userRole(context: Context, value: String): String {
         return when (normalizeCode(value)) {
-            "ADMIN" -> context.getString(R.string.role_admin)
-            "USER" -> context.getString(R.string.role_user)
+            "ROLE_ADMIN", "ADMIN" -> context.getString(R.string.role_admin)
+            "ROLE_USER", "USER" -> context.getString(R.string.role_user)
             else -> humanizeValue(value)
         }
     }

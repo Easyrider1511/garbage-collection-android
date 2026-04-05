@@ -18,11 +18,13 @@ import com.garbagecollection.app.util.SessionManager
 import com.garbagecollection.app.util.UiTextFormatter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    private lateinit var sessionManager: SessionManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
@@ -32,17 +34,13 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sessionManager = SessionManager(requireContext())
+        sessionManager = SessionManager(requireContext())
         binding.tvUsername.text = sessionManager.getUsername()
         binding.tvRole.text = sessionManager.getRole()
             ?.let { UiTextFormatter.userRole(requireContext(), it) }
             .orEmpty()
         updateLanguageUi()
-        binding.btnAdminDashboard.visibility = if (sessionManager.getRole() == "ADMIN") {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
+        updateAdminDashboardVisibility(sessionManager.getRole())
 
         loadProfile()
 
@@ -81,6 +79,8 @@ class ProfileFragment : Fragment() {
                     } else {
                         getString(R.string.status_inactive)
                     }
+                    sessionManager.updateRole(user.role)
+                    updateAdminDashboardVisibility(user.role)
                 }
             } catch (e: Exception) {
                 Toast.makeText(context, R.string.message_error_loading_profile, Toast.LENGTH_SHORT).show()
@@ -90,6 +90,23 @@ class ProfileFragment : Fragment() {
 
     private fun updateLanguageUi() {
         binding.tvLanguageValue.text = AppLanguageManager.getCurrentLanguageDisplayName(requireContext())
+    }
+
+    private fun updateAdminDashboardVisibility(role: String?) {
+        binding.btnAdminDashboard.visibility = if (isAdminRole(role)) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
+
+    private fun isAdminRole(role: String?): Boolean {
+        val normalizedRole = role
+            ?.trim()
+            ?.uppercase(Locale.ROOT)
+            ?.replace('-', '_')
+            ?: return false
+        return normalizedRole == "ADMIN" || normalizedRole == "ROLE_ADMIN"
     }
 
     private fun showLanguageDialog() {

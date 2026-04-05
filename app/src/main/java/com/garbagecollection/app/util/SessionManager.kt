@@ -28,6 +28,11 @@ class SessionManager(context: Context) {
     fun getToken(): String? = prefs.getString(KEY_TOKEN, null)
     fun getUsername(): String? = prefs.getString(KEY_USERNAME, null)
     fun getRole(): String? = prefs.getString(KEY_ROLE, null)
+    fun updateRole(role: String) {
+        prefs.edit {
+            putString(KEY_ROLE, role)
+        }
+    }
     fun getUserId(): Long? {
         val id = prefs.getLong(KEY_USER_ID, -1)
         return if (id == -1L) null else id

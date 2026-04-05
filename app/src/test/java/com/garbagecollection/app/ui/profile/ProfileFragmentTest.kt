@@ -125,4 +125,38 @@ class ProfileFragmentTest {
             assertEquals("Inactive", activity.findViewById<TextView>(R.id.tvStatus).text)
         }
     }
+
+    @Test
+    fun `shows the admin dashboard button when backend role is ROLE_ADMIN even if session is stale`() {
+        TestFixtures.clearAppState()
+        SessionManager(TestFixtures.appContext()).saveSession(
+            token = "stale-token",
+            username = "admin",
+            role = "USER",
+            userId = 1L
+        )
+        retrofitClientRule.fakeApiService.profileResponse = Response.success(
+            UserDTO(
+                id = 1L,
+                username = "admin",
+                email = "admin@example.com",
+                fullName = "System Administrator",
+                role = "ROLE_ADMIN",
+                active = true,
+                banned = false,
+                phoneNumber = null
+            )
+        )
+
+        Robolectric.buildActivity(FragmentTestActivity::class.java).useActivity { activity ->
+            activity.supportFragmentManager.beginTransaction()
+                .add(android.R.id.content, ProfileFragment())
+                .commitNow()
+            TestFixtures.idleMainLooper()
+
+            assertEquals(View.VISIBLE, activity.findViewById<Button>(R.id.btnAdminDashboard).visibility)
+            assertEquals("Administrator", activity.findViewById<TextView>(R.id.tvRole).text)
+            assertEquals("ROLE_ADMIN", SessionManager(TestFixtures.appContext()).getRole())
+        }
+    }
 }
