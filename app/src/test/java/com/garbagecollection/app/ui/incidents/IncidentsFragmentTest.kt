@@ -6,6 +6,7 @@ import com.garbagecollection.app.R
 import com.garbagecollection.app.testsupport.FragmentTestActivity
 import com.garbagecollection.app.testsupport.RetrofitClientRule
 import com.garbagecollection.app.testsupport.TestFixtures
+import com.garbagecollection.app.testsupport.useActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -36,27 +37,28 @@ class IncidentsFragmentTest {
     @Test
     fun `shows empty state when there are no incidents and opens create screen from FAB`() {
         retrofitClientRule.fakeApiService.myIncidentsResponse = Response.success(emptyList())
-        val activity = Robolectric.buildActivity(FragmentTestActivity::class.java).setup().get()
-        val fragment = IncidentsFragment()
+        Robolectric.buildActivity(FragmentTestActivity::class.java).useActivity { activity ->
+            val fragment = IncidentsFragment()
 
-        activity.supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, fragment)
-            .commitNow()
-        TestFixtures.idleMainLooper()
+            activity.supportFragmentManager.beginTransaction()
+                .add(android.R.id.content, fragment)
+                .commitNow()
+            TestFixtures.idleMainLooper()
 
-        assertEquals(2L, retrofitClientRule.fakeApiService.lastRequestedUserId)
-        assertEquals(
-            View.VISIBLE,
-            activity.findViewById<TextView>(R.id.tvEmpty).visibility
-        )
+            assertEquals(2L, retrofitClientRule.fakeApiService.lastRequestedUserId)
+            assertEquals(
+                View.VISIBLE,
+                activity.findViewById<TextView>(R.id.tvEmpty).visibility
+            )
 
-        activity.findViewById<FloatingActionButton>(R.id.fabCreateIncident).performClick()
+            activity.findViewById<FloatingActionButton>(R.id.fabCreateIncident).performClick()
 
-        val startedIntent = shadowOf(activity).nextStartedActivity
-        assertNotNull(startedIntent)
-        assertTrue(
-            startedIntent.component?.className
-                ?.contains(CreateIncidentActivity::class.java.simpleName) == true
-        )
+            val startedIntent = shadowOf(activity).nextStartedActivity
+            assertNotNull(startedIntent)
+            assertTrue(
+                startedIntent.component?.className
+                    ?.contains(CreateIncidentActivity::class.java.simpleName) == true
+            )
+        }
     }
 }

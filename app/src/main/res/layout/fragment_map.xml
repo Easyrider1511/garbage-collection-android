@@ -49,6 +49,48 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardMapZoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMapZoomIn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:contentDescription="@string/action_map_zoom_in"
+                android:minWidth="0dp"
+                android:text="@string/map_zoom_in_symbol"
+                android:textColor="#1B5E20"
+                android:textSize="24sp"
+                app:cornerRadius="14dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMapZoomOut"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="4dp"
+                android:contentDescription="@string/action_map_zoom_out"
+                android:minWidth="0dp"
+                android:text="@string/map_zoom_out_symbol"
+                android:textColor="#1B5E20"
+                android:textSize="24sp"
+                app:cornerRadius="14dp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
     <LinearLayout
         android:id="@+id/mapMessageContainer"
         android:layout_width="match_parent"

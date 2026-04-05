@@ -2,6 +2,7 @@ package com.garbagecollection.app.ui.admin
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -86,11 +87,14 @@ class AdminDashboardActivity : AppCompatActivity() {
                 val schedulesResponse = schedulesDeferred.await()
 
                 val collectionPoints = collectionPointsResponse.body().orEmpty()
-                incidents = incidentsResponse.body().orEmpty()
-                schedules = schedulesResponse.body().orEmpty()
+                    .sortedByDescending { it.id }
+                incidents = incidentsResponse.body().orEmpty().sortedByDescending { it.id }
+                schedules = schedulesResponse.body().orEmpty().sortedByDescending { it.id }
 
                 bindSummary(collectionPoints, incidents, schedules)
                 bindLatestItems(collectionPoints, incidents, schedules)
+                bindIncidentSelector(incidents)
+                bindScheduleSelector(schedules)
             } catch (error: Exception) {
                 val message = error.localizedMessage ?: getString(R.string.message_request_failed)
                 Toast.makeText(
@@ -138,6 +142,107 @@ class AdminDashboardActivity : AppCompatActivity() {
         binding.tvLatestSchedule.text = schedules.firstOrNull()?.let {
             "#${it.id} · ${it.description} · ${UiTextFormatter.scheduleStatus(this, it.status)}"
         } ?: getString(R.string.admin_no_schedules)
+    }
+
+    private fun bindIncidentSelector(incidents: List<IncidentDTO>) {
+        val options = incidents
+            .map { incident ->
+                getString(
+                    R.string.admin_incident_option,
+                    incident.id,
+                    incident.title,
+                    UiTextFormatter.incidentStatus(this, incident.resolutionStatus)
+                )
+            }
+            .ifEmpty { listOf(getString(R.string.admin_no_incidents)) }
+
+        binding.spinnerIncidentTarget.adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            options
+        )
+        binding.spinnerIncidentTarget.isEnabled = incidents.isNotEmpty()
+        binding.btnUpdateIncidentStatus.isEnabled = incidents.isNotEmpty()
+        binding.spinnerIncidentTarget.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    renderSelectedIncidentDetails(incidents.getOrNull(position))
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    renderSelectedIncidentDetails(null)
+                }
+            }
+        renderSelectedIncidentDetails(incidents.firstOrNull())
+    }
+
+    private fun bindScheduleSelector(schedules: List<PickupScheduleDTO>) {
+        val options = schedules
+            .map { schedule ->
+                getString(
+                    R.string.admin_schedule_option,
+                    schedule.id,
+                    schedule.description,
+                    UiTextFormatter.scheduleStatus(this, schedule.status)
+                )
+            }
+            .ifEmpty { listOf(getString(R.string.admin_no_schedules)) }
+
+        binding.spinnerScheduleTarget.adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            options
+        )
+        binding.spinnerScheduleTarget.isEnabled = schedules.isNotEmpty()
+        binding.btnUpdateScheduleStatus.isEnabled = schedules.isNotEmpty()
+        binding.spinnerScheduleTarget.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    renderSelectedScheduleDetails(schedules.getOrNull(position))
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    renderSelectedScheduleDetails(null)
+                }
+            }
+        renderSelectedScheduleDetails(schedules.firstOrNull())
+    }
+
+    private fun renderSelectedIncidentDetails(incident: IncidentDTO?) {
+        binding.tvSelectedIncidentDetails.text = incident?.let {
+            getString(
+                R.string.admin_selected_incident_details,
+                UiTextFormatter.incidentType(this, it.type),
+                UiTextFormatter.severity(this, it.severity),
+                it.address?.ifBlank { null } ?: getString(R.string.no_address_provided),
+                it.reportCount,
+                it.adminNotes?.ifBlank { null } ?: getString(R.string.no_admin_notes_yet)
+            )
+        } ?: getString(R.string.admin_no_incidents)
+    }
+
+    private fun renderSelectedScheduleDetails(schedule: PickupScheduleDTO?) {
+        binding.tvSelectedScheduleDetails.text = schedule?.let {
+            getString(
+                R.string.admin_selected_schedule_details,
+                UiTextFormatter.pickupItemType(this, it.itemType),
+                it.address?.ifBlank { null } ?: getString(R.string.no_address_provided),
+                it.scheduledDate?.ifBlank { null } ?: getString(R.string.pending_scheduling),
+                it.adminNotes?.ifBlank { null } ?: getString(R.string.no_admin_notes_yet)
+            )
+        } ?: getString(R.string.admin_no_schedules)
+
+        binding.etScheduleDate.setText(schedule?.scheduledDate.orEmpty())
     }
 
     private fun createCollectionPoint() {
@@ -194,7 +299,9 @@ class AdminDashboardActivity : AppCompatActivity() {
     }
 
     private fun updateIncidentStatus() {
-        val incidentId = binding.etIncidentId.text.toString().trim().toLongOrNull()
+        val incidentId = incidents
+            .getOrNull(binding.spinnerIncidentTarget.selectedItemPosition)
+            ?.id
         val adminNotes = binding.etIncidentAdminNotes.text.toString().trim()
 
         if (incidentId == null) {
@@ -216,7 +323,6 @@ class AdminDashboardActivity : AppCompatActivity() {
                         R.string.message_incident_status_updated,
                         Toast.LENGTH_SHORT
                     ).show()
-                    binding.etIncidentId.text?.clear()
                     binding.etIncidentAdminNotes.text?.clear()
                     loadDashboard()
                 } else {
@@ -238,7 +344,9 @@ class AdminDashboardActivity : AppCompatActivity() {
     }
 
     private fun updateScheduleStatus() {
-        val scheduleId = binding.etScheduleId.text.toString().trim().toLongOrNull()
+        val scheduleId = schedules
+            .getOrNull(binding.spinnerScheduleTarget.selectedItemPosition)
+            ?.id
         val scheduledDate = binding.etScheduleDate.text.toString().trim()
         val adminNotes = binding.etScheduleAdminNotes.text.toString().trim()
 
@@ -262,7 +370,6 @@ class AdminDashboardActivity : AppCompatActivity() {
                         R.string.message_schedule_status_updated,
                         Toast.LENGTH_SHORT
                     ).show()
-                    binding.etScheduleId.text?.clear()
                     binding.etScheduleDate.text?.clear()
                     binding.etScheduleAdminNotes.text?.clear()
                     loadDashboard()

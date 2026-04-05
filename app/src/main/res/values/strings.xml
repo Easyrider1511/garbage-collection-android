@@ -39,8 +39,6 @@
     <string name="hint_collection_point_name">Collection point name *</string>
     <string name="hint_latitude">Latitude *</string>
     <string name="hint_longitude">Longitude *</string>
-    <string name="hint_incident_id">Incident ID *</string>
-    <string name="hint_schedule_id">Pickup ID *</string>
     <string name="hint_schedule_date_optional">Scheduled date ISO (optional)</string>
     <string name="hint_admin_notes_optional">Admin notes (optional)</string>
     <string name="hint_schedule_description_required">Description *</string>
@@ -65,6 +63,10 @@
     <string name="label_choose_language">Choose language</string>
     <string name="label_map_filter">Filter collection points</string>
     <string name="label_incident_photo">Incident photo</string>
+    <string name="label_admin_select_incident">Select incident *</string>
+    <string name="label_admin_select_schedule">Select pickup request *</string>
+    <string name="label_admin_new_incident_status">New incident status</string>
+    <string name="label_admin_new_schedule_status">New pickup status</string>
 
     <string name="action_login">Login</string>
     <string name="action_register">Register</string>
@@ -83,6 +85,8 @@
     <string name="action_logout">Logout</string>
     <string name="action_save_changes">Save Changes</string>
     <string name="action_change_language">Change language</string>
+    <string name="action_map_zoom_in">Zoom in</string>
+    <string name="action_map_zoom_out">Zoom out</string>
 
     <string name="empty_incidents">No incidents reported yet.\nTap + to report one.</string>
     <string name="empty_schedules">No pickup schedules yet.\nTap + to request one.</string>
@@ -113,6 +117,12 @@
     <string name="admin_no_collection_points">No collection points available</string>
     <string name="admin_no_incidents">No incidents available</string>
     <string name="admin_no_schedules">No pickup requests available</string>
+    <string name="admin_incident_option">#%1$d · %2$s · %3$s</string>
+    <string name="admin_schedule_option">#%1$d · %2$s · %3$s</string>
+    <string name="admin_selected_incident_details">Type: %1$s\nSeverity: %2$s\nAddress: %3$s\nReports: %4$d\nNotes: %5$s</string>
+    <string name="admin_selected_schedule_details">Item: %1$s\nAddress: %2$s\nScheduled date: %3$s\nNotes: %4$s</string>
+    <string name="map_zoom_in_symbol" translatable="false">+</string>
+    <string name="map_zoom_out_symbol" translatable="false">-</string>
 
     <string name="message_fill_all_fields">Please fill in all fields</string>
     <string name="message_fill_required_fields">Please fill in required fields</string>

@@ -8,6 +8,7 @@ import com.garbagecollection.app.testsupport.FakeApiService
 import com.garbagecollection.app.testsupport.FragmentTestActivity
 import com.garbagecollection.app.testsupport.RetrofitClientRule
 import com.garbagecollection.app.testsupport.TestFixtures
+import com.garbagecollection.app.testsupport.useActivity
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -17,6 +18,7 @@ import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
+import org.osmdroid.views.MapView
 import retrofit2.Response
 
 @RunWith(RobolectricTestRunner::class)
@@ -44,41 +46,63 @@ class MapFragmentTest {
 
     @Test
     fun `loads collection points and updates summary when a map filter is selected`() {
-        val activity = Robolectric.buildActivity(FragmentTestActivity::class.java).setup().get()
-        val fragment = MapFragment()
+        Robolectric.buildActivity(FragmentTestActivity::class.java).useActivity { activity ->
+            val fragment = MapFragment()
 
-        activity.supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, fragment)
-            .commitNow()
-        TestFixtures.idleMainLooper()
+            activity.supportFragmentManager.beginTransaction()
+                .add(android.R.id.content, fragment)
+                .commitNow()
+            TestFixtures.idleMainLooper()
 
-        assertEquals(
-            "2 of 2 points shown",
-            activity.findViewById<TextView>(R.id.tvMapFilterSummary).text
-        )
+            assertEquals(
+                "2 of 2 points shown",
+                activity.findViewById<TextView>(R.id.tvMapFilterSummary).text
+            )
 
-        activity.findViewById<Spinner>(R.id.spinnerCollectionTypeFilter).setSelection(4)
-        TestFixtures.idleMainLooper()
+            activity.findViewById<Spinner>(R.id.spinnerCollectionTypeFilter).setSelection(4)
+            TestFixtures.idleMainLooper()
 
-        assertEquals(
-            "1 of 2 point shown",
-            activity.findViewById<TextView>(R.id.tvMapFilterSummary).text
-        )
+            assertEquals(
+                "1 of 2 point shown",
+                activity.findViewById<TextView>(R.id.tvMapFilterSummary).text
+            )
+        }
+    }
+
+    @Test
+    fun `map zoom buttons change the current zoom level`() {
+        Robolectric.buildActivity(FragmentTestActivity::class.java).useActivity { activity ->
+            activity.supportFragmentManager.beginTransaction()
+                .add(android.R.id.content, MapFragment())
+                .commitNow()
+            TestFixtures.idleMainLooper()
+
+            val mapView = activity.findViewById<MapView>(R.id.mapView)
+            val initialZoom = mapView.zoomLevelDouble
+
+            activity.findViewById<android.view.View>(R.id.btnMapZoomIn).performClick()
+            TestFixtures.idleMainLooper()
+            assertEquals(initialZoom + 1.0, mapView.zoomLevelDouble, 0.0001)
+
+            activity.findViewById<android.view.View>(R.id.btnMapZoomOut).performClick()
+            TestFixtures.idleMainLooper()
+            assertEquals(initialZoom, mapView.zoomLevelDouble, 0.0001)
+        }
     }
 
     @Test
     fun `shows empty filter summary when the backend returns no collection points`() {
         retrofitClientRule.fakeApiService.allCollectionPointsResponse = Response.success(emptyList())
-        val activity = Robolectric.buildActivity(FragmentTestActivity::class.java).setup().get()
+        Robolectric.buildActivity(FragmentTestActivity::class.java).useActivity { activity ->
+            activity.supportFragmentManager.beginTransaction()
+                .add(android.R.id.content, MapFragment())
+                .commitNow()
+            TestFixtures.idleMainLooper()
 
-        activity.supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, MapFragment())
-            .commitNow()
-        TestFixtures.idleMainLooper()
-
-        assertEquals(
-            "No collection points available",
-            activity.findViewById<TextView>(R.id.tvMapFilterSummary).text
-        )
+            assertEquals(
+                "No collection points available",
+                activity.findViewById<TextView>(R.id.tvMapFilterSummary).text
+            )
+        }
     }
 }

@@ -236,19 +236,46 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etIncidentId"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:hint="@string/hint_incident_id"
-                        android:inputType="number" />
+                        android:text="@string/label_admin_select_incident"
+                        android:textColor="#455A64"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerIncidentTarget"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvSelectedIncidentDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="#FFF8E1"
+                        android:padding="12dp"
+                        android:text="@string/admin_no_incidents"
+                        android:textColor="#5D4037"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/label_admin_new_incident_status"
+                        android:textColor="#455A64"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinnerIncidentStatus"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:layout_marginTop="8dp" />
+                        android:layout_marginTop="4dp" />
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etIncidentAdminNotes"
@@ -286,19 +313,46 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etScheduleId"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:hint="@string/hint_schedule_id"
-                        android:inputType="number" />
+                        android:text="@string/label_admin_select_schedule"
+                        android:textColor="#455A64"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerScheduleTarget"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvSelectedScheduleDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="#E3F2FD"
+                        android:padding="12dp"
+                        android:text="@string/admin_no_schedules"
+                        android:textColor="#0D47A1"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/label_admin_new_schedule_status"
+                        android:textColor="#455A64"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinnerScheduleStatus"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:layout_marginTop="8dp" />
+                        android:layout_marginTop="4dp" />
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etScheduleDate"

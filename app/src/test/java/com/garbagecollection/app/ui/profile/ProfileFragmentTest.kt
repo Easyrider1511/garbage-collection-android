@@ -8,6 +8,7 @@ import com.garbagecollection.app.model.UserDTO
 import com.garbagecollection.app.testsupport.FragmentTestActivity
 import com.garbagecollection.app.testsupport.RetrofitClientRule
 import com.garbagecollection.app.testsupport.TestFixtures
+import com.garbagecollection.app.testsupport.useActivity
 import com.garbagecollection.app.ui.admin.AdminDashboardActivity
 import com.garbagecollection.app.ui.auth.LoginActivity
 import com.garbagecollection.app.util.SessionManager
@@ -50,50 +51,52 @@ class ProfileFragmentTest {
 
     @Test
     fun `renders admin profile and opens profile and back-office screens`() {
-        val activity = Robolectric.buildActivity(FragmentTestActivity::class.java).setup().get()
-        val fragment = ProfileFragment()
+        Robolectric.buildActivity(FragmentTestActivity::class.java).useActivity { activity ->
+            val fragment = ProfileFragment()
 
-        activity.supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, fragment)
-            .commitNow()
-        TestFixtures.idleMainLooper()
+            activity.supportFragmentManager.beginTransaction()
+                .add(android.R.id.content, fragment)
+                .commitNow()
+            TestFixtures.idleMainLooper()
 
-        assertEquals("admin", activity.findViewById<TextView>(R.id.tvUsername).text)
-        assertEquals("System Administrator", activity.findViewById<TextView>(R.id.tvFullName).text)
-        assertEquals("admin@example.com", activity.findViewById<TextView>(R.id.tvEmail).text)
-        assertEquals("Not set", activity.findViewById<TextView>(R.id.tvPhone).text)
-        assertEquals("Administrator", activity.findViewById<TextView>(R.id.tvRole).text)
-        assertEquals("Active", activity.findViewById<TextView>(R.id.tvStatus).text)
-        assertEquals(View.VISIBLE, activity.findViewById<Button>(R.id.btnAdminDashboard).visibility)
+            assertEquals("admin", activity.findViewById<TextView>(R.id.tvUsername).text)
+            assertEquals("System Administrator", activity.findViewById<TextView>(R.id.tvFullName).text)
+            assertEquals("admin@example.com", activity.findViewById<TextView>(R.id.tvEmail).text)
+            assertEquals("Not set", activity.findViewById<TextView>(R.id.tvPhone).text)
+            assertEquals("Administrator", activity.findViewById<TextView>(R.id.tvRole).text)
+            assertEquals("Active", activity.findViewById<TextView>(R.id.tvStatus).text)
+            assertEquals(View.VISIBLE, activity.findViewById<Button>(R.id.btnAdminDashboard).visibility)
 
-        activity.findViewById<Button>(R.id.btnEditProfile).performClick()
-        assertEquals(
-            ProfileActivity::class.java.name,
-            shadowOf(activity).nextStartedActivity.component?.className
-        )
+            activity.findViewById<Button>(R.id.btnEditProfile).performClick()
+            assertEquals(
+                ProfileActivity::class.java.name,
+                shadowOf(activity).nextStartedActivity.component?.className
+            )
 
-        activity.findViewById<Button>(R.id.btnAdminDashboard).performClick()
-        assertEquals(
-            AdminDashboardActivity::class.java.name,
-            shadowOf(activity).nextStartedActivity.component?.className
-        )
+            activity.findViewById<Button>(R.id.btnAdminDashboard).performClick()
+            assertEquals(
+                AdminDashboardActivity::class.java.name,
+                shadowOf(activity).nextStartedActivity.component?.className
+            )
+        }
     }
 
     @Test
     fun `logout clears the session and starts LoginActivity`() {
-        val activity = Robolectric.buildActivity(FragmentTestActivity::class.java).setup().get()
-        activity.supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, ProfileFragment())
-            .commitNow()
-        TestFixtures.idleMainLooper()
+        Robolectric.buildActivity(FragmentTestActivity::class.java).useActivity { activity ->
+            activity.supportFragmentManager.beginTransaction()
+                .add(android.R.id.content, ProfileFragment())
+                .commitNow()
+            TestFixtures.idleMainLooper()
 
-        activity.findViewById<Button>(R.id.btnLogout).performClick()
+            activity.findViewById<Button>(R.id.btnLogout).performClick()
 
-        assertEquals(
-            LoginActivity::class.java.name,
-            shadowOf(activity).nextStartedActivity.component?.className
-        )
-        assertTrue(SessionManager(TestFixtures.appContext()).isLoggedIn().not())
+            assertEquals(
+                LoginActivity::class.java.name,
+                shadowOf(activity).nextStartedActivity.component?.className
+            )
+            assertTrue(SessionManager(TestFixtures.appContext()).isLoggedIn().not())
+        }
     }
 
     @Test
@@ -112,14 +115,14 @@ class ProfileFragmentTest {
                 phoneNumber = "912345678"
             )
         )
-        val activity = Robolectric.buildActivity(FragmentTestActivity::class.java).setup().get()
+        Robolectric.buildActivity(FragmentTestActivity::class.java).useActivity { activity ->
+            activity.supportFragmentManager.beginTransaction()
+                .add(android.R.id.content, ProfileFragment())
+                .commitNow()
+            TestFixtures.idleMainLooper()
 
-        activity.supportFragmentManager.beginTransaction()
-            .add(android.R.id.content, ProfileFragment())
-            .commitNow()
-        TestFixtures.idleMainLooper()
-
-        assertEquals(View.GONE, activity.findViewById<Button>(R.id.btnAdminDashboard).visibility)
-        assertEquals("Inactive", activity.findViewById<TextView>(R.id.tvStatus).text)
+            assertEquals(View.GONE, activity.findViewById<Button>(R.id.btnAdminDashboard).visibility)
+            assertEquals("Inactive", activity.findViewById<TextView>(R.id.tvStatus).text)
+        }
     }
 }

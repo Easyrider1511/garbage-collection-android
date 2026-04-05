@@ -39,8 +39,6 @@
     <string name="hint_collection_point_name">Nome do ponto de recolha *</string>
     <string name="hint_latitude">Latitude *</string>
     <string name="hint_longitude">Longitude *</string>
-    <string name="hint_incident_id">ID da ocorrência *</string>
-    <string name="hint_schedule_id">ID da recolha *</string>
     <string name="hint_schedule_date_optional">Data agendada ISO (opcional)</string>
     <string name="hint_admin_notes_optional">Notas da administração (opcional)</string>
     <string name="hint_schedule_description_required">Descrição *</string>
@@ -65,6 +63,10 @@
     <string name="label_choose_language">Escolhe o idioma</string>
     <string name="label_map_filter">Filtrar pontos de recolha</string>
     <string name="label_incident_photo">Fotografia da ocorrência</string>
+    <string name="label_admin_select_incident">Selecionar ocorrência *</string>
+    <string name="label_admin_select_schedule">Selecionar pedido de recolha *</string>
+    <string name="label_admin_new_incident_status">Novo estado da ocorrência</string>
+    <string name="label_admin_new_schedule_status">Novo estado da recolha</string>
 
     <string name="action_login">Iniciar sessão</string>
     <string name="action_register">Registar</string>
@@ -83,6 +85,8 @@
     <string name="action_logout">Terminar sessão</string>
     <string name="action_save_changes">Guardar alterações</string>
     <string name="action_change_language">Alterar idioma</string>
+    <string name="action_map_zoom_in">Aumentar zoom</string>
+    <string name="action_map_zoom_out">Reduzir zoom</string>
 
     <string name="empty_incidents">Ainda não existem ocorrências reportadas.\nToca em + para criar uma.</string>
     <string name="empty_schedules">Ainda não existem pedidos de recolha.\nToca em + para criar um.</string>
@@ -111,6 +115,10 @@
     <string name="admin_no_collection_points">Não existem pontos de recolha</string>
     <string name="admin_no_incidents">Não existem ocorrências</string>
     <string name="admin_no_schedules">Não existem pedidos de recolha</string>
+    <string name="admin_incident_option">#%1$d · %2$s · %3$s</string>
+    <string name="admin_schedule_option">#%1$d · %2$s · %3$s</string>
+    <string name="admin_selected_incident_details">Tipo: %1$s\nGravidade: %2$s\nMorada: %3$s\nSinalizações: %4$d\nNotas: %5$s</string>
+    <string name="admin_selected_schedule_details">Item: %1$s\nMorada: %2$s\nData agendada: %3$s\nNotas: %4$s</string>
 
     <string name="message_fill_all_fields">Preenche todos os campos</string>
     <string name="message_fill_required_fields">Preenche os campos obrigatórios</string>

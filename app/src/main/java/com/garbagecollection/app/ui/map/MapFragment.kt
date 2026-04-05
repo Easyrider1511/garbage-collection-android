@@ -70,6 +70,7 @@ class MapFragment : Fragment() {
 
         runCatching {
             setupMap()
+            setupMapControls()
             setupFilters()
             checkLocationPermission()
             loadCollectionPoints()
@@ -112,9 +113,20 @@ class MapFragment : Fragment() {
         val mapView = binding.mapView
         mapView.setTileSource(TileSourceFactory.MAPNIK)
         mapView.setMultiTouchControls(true)
+        mapView.minZoomLevel = MIN_ZOOM
+        mapView.maxZoomLevel = MAX_ZOOM
         mapView.controller.setZoom(DEFAULT_ZOOM)
         mapView.controller.setCenter(DEFAULT_LOCATION)
         showMap()
+    }
+
+    private fun setupMapControls() {
+        binding.btnMapZoomIn.setOnClickListener {
+            binding.mapView.controller.zoomIn()
+        }
+        binding.btnMapZoomOut.setOnClickListener {
+            binding.mapView.controller.zoomOut()
+        }
     }
 
     private fun setupFilters() {
@@ -273,6 +285,8 @@ class MapFragment : Fragment() {
 
     companion object {
         private val DEFAULT_LOCATION = GeoPoint(39.8228, -7.4931)
+        private const val MIN_ZOOM = 3.0
+        private const val MAX_ZOOM = 20.0
         private const val DEFAULT_ZOOM = 14.0
         private const val USER_LOCATION_ZOOM = 15.0
         private const val ANIMATION_DURATION_MS = 1_000L

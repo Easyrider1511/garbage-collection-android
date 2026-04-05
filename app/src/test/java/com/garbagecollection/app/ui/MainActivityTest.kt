@@ -6,6 +6,7 @@ import android.widget.TextView
 import com.garbagecollection.app.R
 import com.garbagecollection.app.testsupport.RetrofitClientRule
 import com.garbagecollection.app.testsupport.TestFixtures
+import com.garbagecollection.app.testsupport.useActivity
 import com.garbagecollection.app.util.AppLanguageManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.junit.Assert.assertEquals
@@ -40,25 +41,27 @@ class MainActivityTest {
 
     @Test
     fun `starts on the map tab and switches toolbar title when profile tab is selected`() {
-        val activity = Robolectric.buildActivity(MainActivity::class.java).setup().get()
-        TestFixtures.idleMainLooper()
+        Robolectric.buildActivity(MainActivity::class.java).useActivity { activity ->
+            TestFixtures.idleMainLooper()
 
-        assertEquals(
-            activity.getString(R.string.title_map),
-            activity.supportActionBar?.title
-        )
-        assertTrue(activity.findViewById<FrameLayout>(R.id.fragment_container).childCount > 0)
+            assertEquals(
+                activity.getString(R.string.title_map),
+                activity.supportActionBar?.title
+            )
+            assertTrue(activity.findViewById<FrameLayout>(R.id.fragment_container).childCount > 0)
 
-        activity.findViewById<BottomNavigationView>(R.id.bottomNavigation).selectedItemId = R.id.nav_profile
-        TestFixtures.idleMainLooper()
+            activity.findViewById<BottomNavigationView>(R.id.bottomNavigation).selectedItemId =
+                R.id.nav_profile
+            TestFixtures.idleMainLooper()
 
-        assertEquals(
-            activity.getString(R.string.title_profile),
-            activity.supportActionBar?.title
-        )
-        assertEquals(
-            "admin",
-            activity.findViewById<TextView>(R.id.tvUsername).text
-        )
+            assertEquals(
+                activity.getString(R.string.title_profile),
+                activity.supportActionBar?.title
+            )
+            assertEquals(
+                "admin",
+                activity.findViewById<TextView>(R.id.tvUsername).text
+            )
+        }
     }
 }

@@ -6,6 +6,7 @@ import com.garbagecollection.app.R
 import com.garbagecollection.app.model.AuthResponse
 import com.garbagecollection.app.testsupport.RetrofitClientRule
 import com.garbagecollection.app.testsupport.TestFixtures
+import com.garbagecollection.app.testsupport.useActivity
 import com.garbagecollection.app.ui.MainActivity
 import com.garbagecollection.app.util.AppLanguageManager
 import com.garbagecollection.app.util.SessionManager
@@ -40,37 +41,37 @@ class LoginActivityTest {
     fun `auto login navigates directly to MainActivity when a session already exists`() {
         TestFixtures.saveAdminSession()
 
-        val activity = Robolectric.buildActivity(LoginActivity::class.java).setup().get()
-
-        assertTrue(activity.isFinishing)
-        assertEquals(
-            MainActivity::class.java.name,
-            shadowOf(activity).nextStartedActivity.component?.className
-        )
+        Robolectric.buildActivity(LoginActivity::class.java).useActivity { activity ->
+            assertTrue(activity.isFinishing)
+            assertEquals(
+                MainActivity::class.java.name,
+                shadowOf(activity).nextStartedActivity.component?.className
+            )
+        }
     }
 
     @Test
     fun `shows validation toast when username or password are empty`() {
-        val activity = Robolectric.buildActivity(LoginActivity::class.java).setup().get()
+        Robolectric.buildActivity(LoginActivity::class.java).useActivity { activity ->
+            activity.findViewById<Button>(R.id.btnLogin).performClick()
 
-        activity.findViewById<Button>(R.id.btnLogin).performClick()
-
-        assertEquals(
-            activity.getString(R.string.message_fill_all_fields),
-            ShadowToast.getTextOfLatestToast()
-        )
+            assertEquals(
+                activity.getString(R.string.message_fill_all_fields),
+                ShadowToast.getTextOfLatestToast()
+            )
+        }
     }
 
     @Test
     fun `language toggle stores Portuguese Portugal`() {
-        val activity = Robolectric.buildActivity(LoginActivity::class.java).setup().get()
+        Robolectric.buildActivity(LoginActivity::class.java).useActivity { activity ->
+            activity.findViewById<Button>(R.id.btnLanguagePortuguese).performClick()
 
-        activity.findViewById<Button>(R.id.btnLanguagePortuguese).performClick()
-
-        assertEquals(
-            AppLanguageManager.LANGUAGE_PT_PT,
-            AppLanguageManager.getSavedLanguageTag(TestFixtures.appContext())
-        )
+            assertEquals(
+                AppLanguageManager.LANGUAGE_PT_PT,
+                AppLanguageManager.getSavedLanguageTag(TestFixtures.appContext())
+            )
+        }
     }
 
     @Test
@@ -78,25 +79,25 @@ class LoginActivityTest {
         retrofitClientRule.fakeApiService.loginResponse = Response.success(
             AuthResponse("auth-token", "citizen", "USER", 99L)
         )
-        val activity = Robolectric.buildActivity(LoginActivity::class.java).setup().get()
+        Robolectric.buildActivity(LoginActivity::class.java).useActivity { activity ->
+            activity.findViewById<TextView>(R.id.etUsername).text = "citizen"
+            activity.findViewById<TextView>(R.id.etPassword).text = "secret123"
+            activity.findViewById<Button>(R.id.btnLogin).performClick()
+            TestFixtures.idleMainLooper()
 
-        activity.findViewById<TextView>(R.id.etUsername).text = "citizen"
-        activity.findViewById<TextView>(R.id.etPassword).text = "secret123"
-        activity.findViewById<Button>(R.id.btnLogin).performClick()
-        TestFixtures.idleMainLooper()
-
-        val sessionManager = SessionManager(TestFixtures.appContext())
-        assertEquals("citizen", retrofitClientRule.fakeApiService.lastLoginRequest?.username)
-        assertEquals("secret123", retrofitClientRule.fakeApiService.lastLoginRequest?.password)
-        assertEquals("auth-token", sessionManager.getToken())
-        assertEquals("citizen", sessionManager.getUsername())
-        assertEquals("USER", sessionManager.getRole())
-        assertEquals(99L, sessionManager.getUserId())
-        assertTrue(activity.findViewById<Button>(R.id.btnLogin).isEnabled)
-        assertEquals(
-            MainActivity::class.java.name,
-            shadowOf(activity).nextStartedActivity.component?.className
-        )
+            val sessionManager = SessionManager(TestFixtures.appContext())
+            assertEquals("citizen", retrofitClientRule.fakeApiService.lastLoginRequest?.username)
+            assertEquals("secret123", retrofitClientRule.fakeApiService.lastLoginRequest?.password)
+            assertEquals("auth-token", sessionManager.getToken())
+            assertEquals("citizen", sessionManager.getUsername())
+            assertEquals("USER", sessionManager.getRole())
+            assertEquals(99L, sessionManager.getUserId())
+            assertTrue(activity.findViewById<Button>(R.id.btnLogin).isEnabled)
+            assertEquals(
+                MainActivity::class.java.name,
+                shadowOf(activity).nextStartedActivity.component?.className
+            )
+        }
     }
 
     @Test
@@ -105,28 +106,28 @@ class LoginActivityTest {
             401,
             "invalid".toResponseBody("text/plain".toMediaType())
         )
-        val activity = Robolectric.buildActivity(LoginActivity::class.java).setup().get()
+        Robolectric.buildActivity(LoginActivity::class.java).useActivity { activity ->
+            activity.findViewById<TextView>(R.id.etUsername).text = "citizen"
+            activity.findViewById<TextView>(R.id.etPassword).text = "wrong-password"
+            activity.findViewById<Button>(R.id.btnLogin).performClick()
+            TestFixtures.idleMainLooper()
 
-        activity.findViewById<TextView>(R.id.etUsername).text = "citizen"
-        activity.findViewById<TextView>(R.id.etPassword).text = "wrong-password"
-        activity.findViewById<Button>(R.id.btnLogin).performClick()
-        TestFixtures.idleMainLooper()
-
-        assertEquals(
-            activity.getString(R.string.message_invalid_credentials),
-            ShadowToast.getTextOfLatestToast()
-        )
+            assertEquals(
+                activity.getString(R.string.message_invalid_credentials),
+                ShadowToast.getTextOfLatestToast()
+            )
+        }
     }
 
     @Test
     fun `register link opens RegisterActivity`() {
-        val activity = Robolectric.buildActivity(LoginActivity::class.java).setup().get()
+        Robolectric.buildActivity(LoginActivity::class.java).useActivity { activity ->
+            activity.findViewById<TextView>(R.id.tvRegister).performClick()
 
-        activity.findViewById<TextView>(R.id.tvRegister).performClick()
-
-        assertEquals(
-            RegisterActivity::class.java.name,
-            shadowOf(activity).nextStartedActivity.component?.className
-        )
+            assertEquals(
+                RegisterActivity::class.java.name,
+                shadowOf(activity).nextStartedActivity.component?.className
+            )
+        }
     }
 }

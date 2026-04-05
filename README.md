@@ -35,22 +35,22 @@ Current report output:
 
 Current coverage snapshot:
 
-- line coverage: 80.96%
-- branch coverage: 59.29%
-- method coverage: 82.19%
-- class coverage: 98.25%
+- line coverage: 82.22%
+- branch coverage: 60.97%
+- method coverage: 83.93%
+- class coverage: 98.31%
 
 ### Emulator smoke test
 
 The app was also installed and manually smoke-tested on an Android Emulator (`emulator-5554`, `Pixel_9_Pro` AVD):
 
 - app launches into the main screen successfully
-- OpenStreetMap map screen loads and renders map tiles
+- OpenStreetMap map screen loads, renders map tiles, and supports zoom controls
 - collection-point type filtering works on the map screen
 - bottom navigation works for Map, Incidents, Schedules, and Profile
 - language switching between English and Portuguese (Portugal) works
 - incident creation exposes camera capture and photo preview/removal
-- admin back-office can be opened from Profile when the logged-in user has the `ADMIN` role
+- admin back-office can be opened from Profile when the logged-in user has the `ADMIN` role, with selector-based updates and contextual previews
 - logout and login work with the backend seed admin user
 - no `FATAL EXCEPTION` was found in the app process logs during the smoke test
 
@@ -58,7 +58,7 @@ The app was also installed and manually smoke-tested on an Android Emulator (`em
 
 - user registration and login with local session persistence
 - app language selection with English and Portuguese (Portugal)
-- collection-point map using OpenStreetMap through osmdroid
+- collection-point map using OpenStreetMap through osmdroid, with pinch and button-based zoom controls
 - collection-point category filtering on the map
 - explicit map fallback message if the map cannot be loaded
 - authenticated user's incident list
@@ -68,7 +68,7 @@ The app was also installed and manually smoke-tested on an Android Emulator (`em
 - "I also see this issue" action to reinforce an existing incident
 - authenticated user's pickup schedule list
 - pickup request creation
-- administration back-office for collection-point creation and incident/pickup status updates
+- administration back-office for collection-point creation and newest-first incident/pickup selectors with contextual previews
 - basic profile view and profile editing
 - logout
 - automated JVM and Robolectric tests for utilities, adapters, auth, profile, map, incidents, schedules, and admin flows

@@ -6,6 +6,7 @@ import com.garbagecollection.app.R
 import com.garbagecollection.app.model.UserDTO
 import com.garbagecollection.app.testsupport.RetrofitClientRule
 import com.garbagecollection.app.testsupport.TestFixtures
+import com.garbagecollection.app.testsupport.useActivity
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -45,45 +46,60 @@ class ProfileActivityTest {
             )
         )
 
-        val activity = Robolectric.buildActivity(ProfileActivity::class.java).setup().get()
-        TestFixtures.idleMainLooper()
+        Robolectric.buildActivity(ProfileActivity::class.java).useActivity { activity ->
+            TestFixtures.idleMainLooper()
 
-        assertEquals("Admin User", activity.findViewById<TextView>(R.id.etFullName).text.toString())
-        assertEquals("admin@example.com", activity.findViewById<TextView>(R.id.etEmail).text.toString())
-        assertEquals("910000000", activity.findViewById<TextView>(R.id.etPhone).text.toString())
+            assertEquals(
+                "Admin User",
+                activity.findViewById<TextView>(R.id.etFullName).text.toString()
+            )
+            assertEquals(
+                "admin@example.com",
+                activity.findViewById<TextView>(R.id.etEmail).text.toString()
+            )
+            assertEquals("910000000", activity.findViewById<TextView>(R.id.etPhone).text.toString())
+        }
     }
 
     @Test
     fun `saveProfile validates name and email before calling backend`() {
-        val activity = Robolectric.buildActivity(ProfileActivity::class.java).setup().get()
-        TestFixtures.idleMainLooper()
+        Robolectric.buildActivity(ProfileActivity::class.java).useActivity { activity ->
+            TestFixtures.idleMainLooper()
 
-        activity.findViewById<TextView>(R.id.etFullName).text = ""
-        activity.findViewById<TextView>(R.id.etEmail).text = ""
-        activity.findViewById<Button>(R.id.btnSave).performClick()
+            activity.findViewById<TextView>(R.id.etFullName).text = ""
+            activity.findViewById<TextView>(R.id.etEmail).text = ""
+            activity.findViewById<Button>(R.id.btnSave).performClick()
 
-        assertEquals(
-            activity.getString(R.string.message_name_email_required),
-            ShadowToast.getTextOfLatestToast()
-        )
+            assertEquals(
+                activity.getString(R.string.message_name_email_required),
+                ShadowToast.getTextOfLatestToast()
+            )
+        }
     }
 
     @Test
     fun `saveProfile sends update request and closes screen on success`() {
-        val activity = Robolectric.buildActivity(ProfileActivity::class.java).setup().get()
-        TestFixtures.idleMainLooper()
+        Robolectric.buildActivity(ProfileActivity::class.java).useActivity { activity ->
+            TestFixtures.idleMainLooper()
 
-        activity.findViewById<TextView>(R.id.etFullName).text = "Updated User"
-        activity.findViewById<TextView>(R.id.etEmail).text = "updated@example.com"
-        activity.findViewById<TextView>(R.id.etPhone).text = ""
-        activity.findViewById<TextView>(R.id.etNewPassword).text = "new-pass"
-        activity.findViewById<Button>(R.id.btnSave).performClick()
-        TestFixtures.idleMainLooper()
+            activity.findViewById<TextView>(R.id.etFullName).text = "Updated User"
+            activity.findViewById<TextView>(R.id.etEmail).text = "updated@example.com"
+            activity.findViewById<TextView>(R.id.etPhone).text = ""
+            activity.findViewById<TextView>(R.id.etNewPassword).text = "new-pass"
+            activity.findViewById<Button>(R.id.btnSave).performClick()
+            TestFixtures.idleMainLooper()
 
-        assertEquals("Updated User", retrofitClientRule.fakeApiService.lastProfileUpdateRequest?.fullName)
-        assertEquals("updated@example.com", retrofitClientRule.fakeApiService.lastProfileUpdateRequest?.email)
-        assertEquals("new-pass", retrofitClientRule.fakeApiService.lastProfileUpdateRequest?.password)
-        assertEquals(null, retrofitClientRule.fakeApiService.lastProfileUpdateRequest?.phoneNumber)
-        assertTrue(activity.isFinishing)
+            assertEquals(
+                "Updated User",
+                retrofitClientRule.fakeApiService.lastProfileUpdateRequest?.fullName
+            )
+            assertEquals(
+                "updated@example.com",
+                retrofitClientRule.fakeApiService.lastProfileUpdateRequest?.email
+            )
+            assertEquals("new-pass", retrofitClientRule.fakeApiService.lastProfileUpdateRequest?.password)
+            assertEquals(null, retrofitClientRule.fakeApiService.lastProfileUpdateRequest?.phoneNumber)
+            assertTrue(activity.isFinishing)
+        }
     }
 }
